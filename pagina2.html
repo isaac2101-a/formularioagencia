@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formato Único de la Persona Solicitante – Página 2</title>
+
+    <!-- ============ PALETA Y RESET BÁSICO (igual que pág. 1) ============= -->
+    <style>
+      :root {
+        --dorado: #b2966c;
+        --burdeos: #8d1d32;
+        --gris: #666;
+        --gris-claro: #e0e0e0;
+        --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: var(--font);
+      }
+      body {
+        background: #fff;
+        color: #222;
+      }
+
+      /* ---------- CONTENEDOR (mismo ancho que página 1) ---------- */
+      .formato {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto 40px;
+        border: 4px solid var(--burdeos);
+      }
+      @media print {
+        .formato {
+          border: none;
+          width: 210mm;
+          margin: 0;
+        }
+      }
+
+      /* ---------- BARRA SUPERIOR DORADA CON LOGO ---------- */
+      .encabezado {
+        background: var(--dorado);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 16px;
+        color: #fff;
+      }
+      .encabezado img {
+        height: 58px;
+      }
+      .encabezado h1 {
+        font-size: 1.2rem;
+        line-height: 1.15;
+        text-transform: uppercase;
+      }
+      .encabezado small {
+        font-size: 0.65rem;
+        font-weight: 400;
+      }
+
+      /* ---------- TÍTULO PRINCIPAL ---------- */
+      .titulo-principal {
+        font-size: 1.05rem;
+        font-weight: 700;
+        padding: 10px 16px;
+      }
+
+      /* ---------- FECHA/FOLIO ---------- */
+      .mini-cajas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        padding: 0 16px 14px;
+      }
+      .mini-cajas .item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.82rem;
+      }
+      .mini-cajas label {
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .mini-cajas input {
+        flex: 0 0 180px;
+        border: 2px solid var(--gris);
+        border-radius: 6px;
+        padding: 4px 6px;
+        font-size: 0.8rem;
+      }
+
+      /* ---------- BLOQUE GENÉRICO ---------- */
+      .bloque {
+        border: 2.6px solid var(--burdeos);
+        margin: 0 16px 24px;
+      }
+      .bloque .titulo-bloque {
+        background: var(--burdeos);
+        color: #fff;
+        padding: 6px 10px;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+      .bloque .contenido {
+        padding: 16px 14px 22px;
+      }
+
+      /* ---------- SUBSECCIONES Y DIVIDERS ---------- */
+      .subtitulo {
+        font-weight: 700;
+        color: var(--burdeos);
+        font-size: 0.8rem;
+        margin: 10px 0 4px;
+      }
+      .divider {
+        height: 2px;
+        background: var(--burdeos);
+        margin-bottom: 10px;
+      }
+
+      /* ---------- GRID FLEXIBLE ---------- */
+      .fila {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 8px 10px;
+        margin-bottom: 10px;
+      }
+      .col-12 {
+        grid-column: span 12;
+      }
+      .col-10 {
+        grid-column: span 10;
+      }
+      .col-8 {
+        grid-column: span 8;
+      }
+      .col-6 {
+        grid-column: span 6;
+      }
+      .col-4 {
+        grid-column: span 4;
+      }
+      .col-3 {
+        grid-column: span 3;
+      }
+      .col-2 {
+        grid-column: span 2;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 6px 8px;
+        border: 1.6px solid var(--gris);
+        border-radius: 4px;
+        font-size: 0.8rem;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.75rem;
+        margin-bottom: 12px;
+      }
+      th,
+      td {
+        border: 1px solid var(--gris);
+        padding: 4px;
+        text-align: center;
+      }
+      th {
+        background: var(--gris-claro);
+        font-weight: 600;
+      }
+
+      /* ---------- NOTA LEGAL ---------- */
+      .nota-legal {
+        font-size: 0.55rem;
+        line-height: 1.25;
+        padding: 14px 18px 26px;
+        color: var(--gris);
+        text-align: justify;
+      }
+      .subbox{border:2.6px solid var(--burdeos);margin-bottom:18px;}
+.subbox-header{background:var(--dorado);color:#fff;font-weight:700;font-size:.8rem;padding:4px 8px;}
+.subbox-body{padding:10px 10px 14px;font-size:.76rem;line-height:1.32;}
+
+table.escala,table.escala td,table.escala th{border:1px solid var(--burdeos);border-collapse:collapse;}
+table.escala{width:100%;font-size:.72rem;}
+table.escala th{background:var(--dorado);color:#fff;text-align:left;padding:4px 6px;}
+table.escala tr:last-child td{background:#d9b3bf;font-weight:700;text-align:center;}
+
+.tiny{width:46px;text-align:center;}
+.mini{width:60px;}
+
+.chk,.rad{appearance:none;width:14px;height:14px;border:2px solid var(--dorado);border-radius:50%;position:relative;vertical-align:middle;cursor:pointer;margin-right:4px;}
+.chk{border-radius:3px;}
+.rad:checked::after{content:'';position:absolute;inset:3px;background:var(--burdeos);border-radius:50%;}
+.chk:checked::after{content:'';position:absolute;inset:2px;background:var(--burdeos);}
+    </style>
+  </head>
+  <body>
+    <main class="formato">
+      <!-- ENCABEZADO Y TÍTULO (mismo que página 1) -->
+      <div class="encabezado">
+        <img src="logo_hidalgo.png" alt="Logo Hidalgo" />
+        <h1>Hidalgo<br /><small>Primero el Pueblo&nbsp;2022‑2028</small></h1>
+      </div>
+      <div class="titulo-principal">
+        Formato Único de la Persona Solicitante
+      </div>
+      <div class="mini-cajas">
+        <div class="item">
+          <label>Fecha:</label><input placeholder="Día/Mes/Año" />
+        </div>
+        <div class="item">
+          <label>Folio de Registro:</label
+          ><input placeholder="Área/Programa/Año/Núm." />
+        </div>
+      </div>
+
+      <!-- 4.- INFORMACIÓN ESPECÍFICA DEL PROGRAMA -->
+      <section class="bloque" id="info-programa">
+        <div class="titulo-bloque">4.- Información Específica del Programa</div>
+        <div class="contenido">
+          <!-- Preguntas 1 y 2 -->
+          <div class="fila">
+            <label class="col-12"
+              >1.- Número de habitantes en la vivienda (Incluye persona
+              solicitante): <input type="text"
+            /></label>
+          </div>
+          <div class="fila">
+            <label class="col-12"
+              >2.- De los miembros del hogar, ¿Cuántos reciben algún programa
+              social? <input type="text" />&nbsp; <strong>TOTAL</strong></label
+            >
+          </div>
+
+          <!-- Ingreso Mensual -->
+          <div class="subtitulo">
+            Ingreso Mensual (Anote a todas las personas del hogar)
+          </div>
+          <div class="divider"></div>
+          <table>
+            <thead>
+              <tr>
+                <th rowspan="2">#</th>
+                <th rowspan="2">Parentesco</th>
+                <th rowspan="2">Edad</th>
+                <th rowspan="2">Jefe de Familia</th>
+                <th rowspan="2">Actividad Principal</th>
+                <th colspan="3">Ingresos</th>
+              </tr>
+              <tr>
+                <th>Por trabajo</th>
+                
+                <th>Programas sociales</th>
+                <th>Otro tipo de ingresos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 6 filas numeradas -->
+              <!-- Puedes duplicar <tr> según sea necesario -->
+              <tr>
+                <td>1</td>
+                <td><input /></td>
+                <td><input /></td>
+                <td>
+                  <select>
+                    <option>Sí</option>
+                    <option>No</option>
+                  </select>
+                </td>
+                <td><input /></td>
+                <td><input /></td>
+                <td><input /></td>
+                <td><input /></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><input /></td>
+                <td><input /></td>
+                <td>
+                  <select>
+                    <option>Sí</option>
+                    <option>No</option>
+                  </select>
+                </td>
+                <td><input /></td>
+                <td><input /></td>
+                <td><input /></td>
+                <td><input /></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><input /></td>
+                <td><input /></td>
+                <td>
+                  <select>
+                    <option>Sí</option>
+                    <option>No</option>
+                  </select>
+                </td>
+                <td><input /></td>
+                <td><input /></td>
+                <td><input /></td>
+                <td><input /></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><input /></td>
+                <td><input /></td>
+                <td>
+                  <select>
+                    <option>Sí</option>
+                    <option>No</option>
+                  </select>
+                </td>
+                <td><input /></td>
+                <td><input /></td>
+                <td><input /></td>
+                <td><input /></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td><input /></td>
+                <td><input /></td>
+                <td>
+                  <select>
+                    <option>Sí</option>
+                    <option>No</option>
+                  </select>
+                </td>
+                <td><input /></td>
+                <td><input /></td>
+                <td><input /></td>
+                <td><input /></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td><input /></td>
+                <td><input /></td>
+                <td>
+                  <select>
+                    <option>Sí</option>
+                    <option>No</option>
+                  </select>
+                </td>
+                <td><input /></td>
+                <td><input /></td>
+                <td><input /></td>
+                <td><input /></td>
+              </tr>
+              
+            </tbody>
+            <tfoot>
+              <tr>
+                <th colspan="7" style="text-align: right">TOTAL</th>
+                <th><input /></th>
+              </tr>
+            </tfoot>
+            
+          </table>
+<!-- === BLOQUES IZQUIERDA | DERECHA (idénticos al PDF) ============== -->
+<div style="display:grid;grid-template-columns:repeat(12,1fr);gap:18px 22px;">
+
+  <!-- COLUMNA IZQUIERDA (span 4) -->
+  <div style="grid-column:span 4;">
+
+    <!-- Egreso Mensual -->
+    <div class="subbox" >
+      <div class="subbox-header" >Egreso Mensual</div>
+      <div class="subbox-body">
+        <p style="display:flex;align-items:center;gap:6px;margin:0 0 10px;">
+          <input class="rad" name="egreso_alim"> <strong>Alimentación&nbsp;$</strong> 
+          <input class="mini">
+        </p>
+        <p style="font-size:.74rem;">Porcentaje del egreso mensual destinado a la alimentación</p>
+        <input class="mini" style="margin-top:4px;">
+      </div>
+    </div>
+
+    <!-- Condición étnica -->
+    <div class="subbox">
+      <div class="subbox-header">Condición étnica</div>
+      <div class="subbox-body">
+        <p style="margin:0 0 8px;">¿Habla una lengua indígena?</p>
+        <label><input class="rad" name="indig" > SI……<small>01</small></label><br>
+        <label><input class="rad" name="indig" > NO……<small>02</small></label><br><br>
+        <label>¿Cuál?<br><input style="width:100%;margin-top:4px;"></label>
+      </div>
+    </div>
+
+    <!-- Escala Final -->
+    <div class="subbox">
+      <div class="subbox-header">Escala Final</div>
+      <div class="subbox-body" style="padding:0;">
+        <table class="escala">
+          <tr><th>Escala Final</th><th>Puntaje<br>Obtenido</th></tr>
+          <tr><td>Ingreso Familiar&nbsp;(55)</td><td><input class="tiny"></td></tr>
+          <tr><td>Tipo de Vivienda&nbsp;(15)</td><td><input class="tiny"></td></tr>
+          <tr><td>Alimentación&nbsp;(10)</td><td><input class="tiny"></td></tr>
+          <tr><td>Localidad de Procedencia&nbsp;(20)</td><td><input class="tiny"></td></tr>
+          <tr><td>TOTAL</td><td></td></tr>
+        </table>
+      </div>
+    </div>
+  </div><!-- /col-izquierda -->
+
+  <!-- COLUMNA DERECHA (span 8) -->
+  <div style="grid-column:span 8;">
+
+    <div class="subbox">
+      <div class="subbox-header">Vivienda</div>
+      <div class="subbox-body" style="padding:0;">
+
+        <!-- Fila 1 : Posesión | Material -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;">
+          <!-- Posesión -->
+          <div style="border-right:2.6px solid var(--burdeos);padding:10px;">
+            <div class="subbox-header" style="background:var(--dorado);font-size:.78rem;">Posesión de la vivienda</div>
+            <br>
+            <br>
+            <p style="margin:6px 0 4px;font-size:.74rem;">La vivienda donde habita es: </p>
+                      
+
+<select id="posesionVivienda" name="posesionVivienda" required>
+  <option value="">Seleccione una opción</option>
+  <option value="01">Propia y totalmente pagada</option>
+  <option value="02">Propia y la está pagando</option>
+  <option value="03">Propia y está hipotecada</option>
+  <option value="04">Rentada o Alquilada</option>
+  <option value="05">Prestada o la está cuidando</option>
+  <option value="06">Intestada o está en litigio</option>
+</select>
+            
+
+
+ 
+
+          </div>
+          
+          <!-- Material -->
+          <div style="padding:10px;">
+
+
+            
+
+            <div class="subbox-header" style="background:var(--dorado);font-size:.78rem;">Material de la vivienda</div>
+            <h3>¿De qué material es la mayor parte de su vivienda?</h3>
+
+<!-- Selector general si se requiere -->
+  <p style="margin:6px 0 4px;font-size:.74rem;">a.- Las Paredes o muros de la vivienda: </p>
+
+<select id="materialPrincipal" name="materialPrincipal">
+  <option value="">Seleccione una opción</option>
+  <option value="1">Cartón, tela</option>
+  <option value="2">Palma, paja</option>
+  <option value="3">Adobe</option>
+  <option value="4">Teja</option>
+  <option value="5">Lámina de cartón</option>
+   <option value="6">Lámina metálica</option>
+    <option value="7">Lámina de asbesto</option>
+     <option value="8">Madero o tejamanil</option>
+      <option value="9">Tabique, ladrillo, piedra</option>
+          <option value="10">Concreto, firme, loseta</option>
+              <option value="11">Tierra</option>
+  <!-- Agrega más opciones según tu catálogo -->
+</select>
+
+
+
+
+
+ <p style="margin:6px 0 4px;font-size:.74rem;">b.- Techo de la vivienda </p>
+
+<select id="materialPrincipal" name="materialPrincipal">
+  <option value="">Seleccione una opción</option>
+  <option value="1">Cartón, tela</option>
+  <option value="2">Palma, paja</option>
+  <option value="3">Adobe</option>
+  <option value="4">Teja</option>
+  <option value="5">Lámina de cartón</option>
+   <option value="6">Lámina metálica</option>
+    <option value="7">Lámina de asbesto</option>
+     <option value="8">Madero o tejamanil</option>
+      <option value="9">Tabique, ladrillo, piedra</option>
+          <option value="10">Concreto, firme, loseta</option>
+              <option value="11">Tierra</option>
+  <!-- Agrega más opciones según tu catálogo -->
+</select>
+
+
+
+ <p style="margin:6px 0 4px;font-size:.74rem;">c.- Piso de la vivienda  </p>
+
+<select id="materialPrincipal" name="materialPrincipal">
+  <option value="">Seleccione una opción</option>
+  <option value="1">Cartón, tela</option>
+  <option value="2">Palma, paja</option>
+  <option value="3">Adobe</option>
+  <option value="4">Teja</option>
+  <option value="5">Lámina de cartón</option>
+   <option value="6">Lámina metálica</option>
+    <option value="7">Lámina de asbesto</option>
+     <option value="8">Madero o tejamanil</option>
+      <option value="9">Tabique, ladrillo, piedra</option>
+          <option value="10">Concreto, firme, loseta</option>
+              <option value="11">Tierra</option>
+  <!-- Agrega más opciones según tu catálogo -->
+</select>
+
+
+            
+           
+
+
+            
+          </div>
+
+
+        </div><!-- /fila1 -->
+
+        <!-- Fila 2 : Servicios | Tamaño -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;border-top:2.6px solid var(--burdeos);">
+          <!-- Servicios -->
+          <div style="border-right:2.6px solid var(--burdeos);padding:10px;">
+            <h3 style="background-color: #b8945c; color: white; padding: 4px;">Servicios de la vivienda</h3>
+<p>Servicios básicos con los que cuenta (Registre Nº)<br><strong>SI……01 &nbsp;&nbsp; NO……02</strong></p>
+
+<form>
+  <label>a.- Luz</label><br>
+  <select name="luz" required>
+    <option value="">Seleccione</option>
+    <option value="01">Sí</option>
+    <option value="02">No</option>
+  </select><br><br>
+
+  <label>b.- Agua Potable</label><br>
+  <select name="aguaPotable" required>
+    <option value="">Seleccione</option>
+    <option value="01">Sí</option>
+    <option value="02">No</option>
+  </select><br><br>
+
+  <label>c.- Cisterna</label><br>
+  <select name="cisterna" required>
+    <option value="">Seleccione</option>
+    <option value="01">Sí</option>
+    <option value="02">No</option>
+  </select><br><br>
+
+  <label>d.- Celular</label><br>
+  <select name="celular" required>
+    <option value="">Seleccione</option>
+    <option value="01">Sí</option>
+    <option value="02">No</option>
+  </select><br><br>
+
+  <label>e.- Internet en casa</label><br>
+  <select name="internet" required>
+    <option value="">Seleccione</option>
+    <option value="01">Sí</option>
+    <option value="02">No</option>
+  </select><br><br>
+
+  <label>f.- Televisión</label><br>
+  <select name="television" required>
+    <option value="">Seleccione</option>
+    <option value="01">Sí</option>
+    <option value="02">No</option>
+  </select><br><br>
+
+  <label>g.- ¿Drenaje conectado a red municipal?</label><br>
+  <select name="drenaje" required>
+    <option value="">Seleccione</option>
+    <option value="01">Sí</option>
+    <option value="02">No</option>
+  </select><br><br>
+
+  <label>La calle</label><br>
+  <select name="laCalle" required>
+    <option value="">Seleccione</option>
+    <option value="01">Sí</option>
+    <option value="02">No</option>
+  </select><br><br>
+
+  <label>Aire libre</label><br>
+  <select name="aireLibre" required>
+    <option value="">Seleccione</option>
+    <option value="01">Sí</option>
+    <option value="02">No</option>
+  </select><br><br>
+
+  <label>No tiene</label><br>
+  <select name="noTiene" required>
+    <option value="">Seleccione</option>
+    <option value="01">Sí</option>
+    <option value="02">No</option>
+  </select><br><br>
+</form>
+
+
+
+
+
+
+
+           
+           
+          </div>
+
+          <!-- Tamaño -->
+          <div style="padding:10px;">
+            <div class="subbox-header" style="background:var(--dorado);font-size:.78rem;">Tamaño de la vivienda</div>
+            
+            <p style="margin:6px 0 6px;font-size:.74rem;">¿Cuántos dormitorios tiene? <input class="tiny"></p>
+
+            <label for="personasDormitorio">Número de personas por dormitorio (Registre Nº)</label><br>
+<select id="personasDormitorio" name="personasDormitorio" required>
+  <option value="">Seleccione una opción</option>
+  <option value="01">4 o más</option>
+  <option value="02"> 3</option>
+  <option value="03">1 o 2</option>
+</select>
+           
+            <p style="margin-top:8px;font-size:.74rem;">Puntaje de Vivienda <input class="tiny"></p>
+            
+          </div>
+        </div><!-- /fila2 -->
+
+      </div><!-- /subbox-body -->
+      
+    </div><!-- /subbox Vivienda -->
+
+  </div><!-- /col-derecha -->
+</div><!-- /grid 12 -->
+
+      </section>
+
+      <!-- 5.- SOLICITUD -->
+      <section class="bloque" id="solicitud">
+        <div class="titulo-bloque">5.- Solicitud</div>
+        <div class="contenido">
+          <p style="font-size: 0.75rem; line-height: 1.35">
+            Por medio de la presente, bajo protesta de decir verdad,  manifiesto que mis datos son 
+auténticos, por lo que solicito mi incorporación al programa antes señalado, ya que cumplo 
+con los requisitos establecidos en la normatividad aplicable, misma a la que me obligo a dar 
+cumplimiento. Asimismo, manifiesto de manera libre e informada mi consentimiento para 
+verificar la información contenida en la presente. Autorizo expresamente la inclusión de mis 
+datos personales para el registro de la solicitud, así como en el padrón que determine el 
+Gobierno del Estado de Hidalgo.
+          </p>
+          <br />
+          <div class="fila">
+            <label class="col-6"
+              >Firma del solicitante <input type="text" style="height: 40px"
+            /></label>
+          </div>
+
+  <p style="font-size: 0.75rem; line-height: 1.35">
+          Diagnóstico social, o características prioritarias del programa no contemplados y contempladas
+en el cuestionario. Se puede agregar un anexo en caso necesario.
+          </p>
+          <br />
+          <div class="fila">
+            <label class="col-6"> <input type="text" style="height: 40px"
+            /></label>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 6.- VALIDACIÓN -->
+      <section class="bloque" id="validacion">
+        <div class="titulo-bloque">6.- Validación de Información</div>
+        <div class="contenido">
+          <div class="fila">
+            <label class="col-4"
+              >¿El solicitante cumple con los criterios?
+              <select>
+                <option>SÍ</option>
+                <option>NO</option>
+              </select></label
+            >
+            <label class="col-2"
+              >Puntaje Obtenido <input type="number"
+            /></label>
+            <label class="col-3"
+              >Elaboró: Nombre / Cargo / Firma <input type="text"
+            /></label>
+            <label class="col-3"
+              >Validó: Nombre / Cargo / Firma <input type="text"
+            /></label>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTA LEGAL (misma que pág. 1, opcional) -->
+      <div class="nota-legal">
+        La información que sea proporcionada se utilizará única y exclusivamente para la finalidad de los programas sociales. No se proporcionará a terceros o para su uso con otro tipo de fines. El Gobierno del Estado de Hidalgo es el responsable de la gestión, manejo y tratamiento de los datos personales sensibles proporcionados en los términos de las disposiciones previstas en la LEY DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE SUJETOS OBLIGADOS PARA EL ESTADO DE HIDALGO, ÚLTIMA REFORMA PUBLICADA EN EL ALCANCE DEL PERIÓDICO OFICIAL 27 DE JUNIO DE 2022 y publicada en el PERIÓDICO OFICIAL el 24 de julio de 2017, y en la LEY DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN PÚBLICA PARA EL ESTADO DE HIDALGO, ÚLTIMA REFORMA PUBLICADA EN EL ALCANCE DEL PERIÓDICO OFICIAL el 28 de julio de 2021 y publicada en el Periódico Oficial el miércoles 4 de mayo de 2016.
+        </div>
+        <div class="nota-legal">Los datos personales recabados serán utilizados para: Realizar registro, control y un expediente de beneficiarios de programas sociales. De manera adicional, se utilizará la información personal para generarinformes estadisticos. En caso de que la autoria no desee que sus datos personales sean tratados para las finalidades adicionales, puede manifestado a través del como electrónico secretaria.bienestar @hidalgogobmx. Le informamos que sus datos personales NO son compartidos con personas, empresas, organizaciones y autoridades distintas al sujeto obligado salvo que sean necesarias para atender requerimientos de información de una autoridad competente, debidamente fundados y motivados. Para más información acerca del tratamiento y de los derechos que puede hacer valer, usted puede acceder al aviso de privacidad integral a través de la dirección electrónica: https://sebiso.hidalgo.gob.mx/AvisosPrivacidad
+        </div>
+     </main>
+  </body>
+</html>
