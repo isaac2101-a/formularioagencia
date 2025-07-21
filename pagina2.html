@@ -185,6 +185,63 @@
         color: var(--gris);
         text-align: justify;
       }
+      
+       .material-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .material-item span:first-child {
+      flex: 1;
+      border-bottom: 1px dotted #000;
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .material-item span:last-child {
+      flex: 0 0 auto;
+      padding-left: 6px;
+    }
+
+    @media (max-width: 480px) {
+      .material-item {
+        font-size: 0.68rem;
+      }
+    }
+
+     /* ---------- BOTONES ---------- */
+      .btn {
+        display: inline-block;
+        padding: 8px 28px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        line-height: 1;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none; /* quita subrayado del <a> */
+        transition: background 0.25s;
+      }
+      .btn-primary {
+        background: var(--burdeos);
+        color: #fff;
+      }
+      .btn-primary:hover,
+      .btn-primary:focus {
+        background: #6f1125; /* burdeos más oscuro al pasar el mouse */
+        color: #fff;
+      }
+      @media print {
+        .btn {
+          display: none;
+        } /* oculta el botón al imprimir */
+      }
+
+
+
+
       .subbox{border:2.6px solid var(--burdeos);margin-bottom:18px;}
 .subbox-header{background:var(--dorado);color:#fff;font-weight:700;font-size:.8rem;padding:4px 8px;}
 .subbox-body{padding:10px 10px 14px;font-size:.76rem;line-height:1.32;}
@@ -214,14 +271,22 @@ table.escala tr:last-child td{background:#d9b3bf;font-weight:700;text-align:cent
         Formato Único de la Persona Solicitante
       </div>
       <div class="mini-cajas">
-        <div class="item">
-          <label>Fecha:</label><input placeholder="Día/Mes/Año" />
-        </div>
-        <div class="item">
-          <label>Folio de Registro:</label
-          ><input placeholder="Área/Programa/Año/Núm." />
-        </div>
-      </div>
+  <div class="item">
+    <label for="fecha" class="required">Fecha:</label>
+    <input
+      type="text"
+      id="fecha"
+      name="fecha"
+      placeholder="Día/Mes/Año"
+      required
+      readonly
+    />
+  </div>
+  <div class="item">
+    <label for="folio">Folio de Registro:</label>
+    <input id="folio" placeholder="Área/Programa/Año/Núm. de Ingreso" disabled/>
+  </div>
+</div>
 
       <!-- 4.- INFORMACIÓN ESPECÍFICA DEL PROGRAMA -->
       <section class="bloque" id="info-programa">
@@ -230,14 +295,14 @@ table.escala tr:last-child td{background:#d9b3bf;font-weight:700;text-align:cent
           <!-- Preguntas 1 y 2 -->
           <div class="fila">
             <label class="col-12"
-              >1.- Número de habitantes en la vivienda (Incluye persona
+              >1.- Nº de habitantes en la vivienda (Incluye persona
               solicitante): <input type="text"
-            /></label>
+           class="solo-numeros" /></label>
           </div>
           <div class="fila">
             <label class="col-12"
               >2.- De los miembros del hogar, ¿Cuántos reciben algún programa
-              social? <input type="text" />&nbsp; <strong>TOTAL</strong></label
+              social? <input type="text" class="solo-numeros"/>&nbsp; <strong>TOTAL</strong></label
             >
           </div>
 
@@ -246,145 +311,114 @@ table.escala tr:last-child td{background:#d9b3bf;font-weight:700;text-align:cent
             Ingreso Mensual (Anote a todas las personas del hogar)
           </div>
           <div class="divider"></div>
-          <table>
-            <thead>
-              <tr>
-                <th rowspan="2">#</th>
-                <th rowspan="2">Parentesco</th>
-                <th rowspan="2">Edad</th>
-                <th rowspan="2">Jefe de Familia</th>
-                <th rowspan="2">Actividad Principal</th>
-                <th colspan="3">Ingresos</th>
-              </tr>
-              <tr>
-                <th>Por trabajo</th>
-                
-                <th>Programas sociales</th>
-                <th>Otro tipo de ingresos</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- 6 filas numeradas -->
-              <!-- Puedes duplicar <tr> según sea necesario -->
-              <tr>
-                <td>1</td>
-                <td><input /></td>
-                <td><input /></td>
-                <td>
-                  <select>
-                    <option>Sí</option>
-                    <option>No</option>
-                  </select>
-                </td>
-                <td><input /></td>
-                <td><input /></td>
-                <td><input /></td>
-                <td><input /></td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td><input /></td>
-                <td><input /></td>
-                <td>
-                  <select>
-                    <option>Sí</option>
-                    <option>No</option>
-                  </select>
-                </td>
-                <td><input /></td>
-                <td><input /></td>
-                <td><input /></td>
-                <td><input /></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td><input /></td>
-                <td><input /></td>
-                <td>
-                  <select>
-                    <option>Sí</option>
-                    <option>No</option>
-                  </select>
-                </td>
-                <td><input /></td>
-                <td><input /></td>
-                <td><input /></td>
-                <td><input /></td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td><input /></td>
-                <td><input /></td>
-                <td>
-                  <select>
-                    <option>Sí</option>
-                    <option>No</option>
-                  </select>
-                </td>
-                <td><input /></td>
-                <td><input /></td>
-                <td><input /></td>
-                <td><input /></td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td><input /></td>
-                <td><input /></td>
-                <td>
-                  <select>
-                    <option>Sí</option>
-                    <option>No</option>
-                  </select>
-                </td>
-                <td><input /></td>
-                <td><input /></td>
-                <td><input /></td>
-                <td><input /></td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td><input /></td>
-                <td><input /></td>
-                <td>
-                  <select>
-                    <option>Sí</option>
-                    <option>No</option>
-                  </select>
-                </td>
-                <td><input /></td>
-                <td><input /></td>
-                <td><input /></td>
-                <td><input /></td>
-              </tr>
-              
-            </tbody>
-            <tfoot>
-              <tr>
-                <th colspan="7" style="text-align: right">TOTAL</th>
-                <th><input /></th>
-              </tr>
-            </tfoot>
-            
-          </table>
+        <table>
+  <thead>
+    <tr>
+      <th rowspan="2">#</th>
+      <th rowspan="2">Parentesco</th>
+      <th rowspan="2">Edad</th>
+      <th rowspan="2">Jefe de Familia</th>
+      <th rowspan="2">Actividad Principal</th>
+      <th colspan="3">Ingresos</th>
+    </tr>
+    <tr>
+      <th>Por trabajo</th>
+      <th>Programas sociales</th>
+      <th>Otro tipo de ingresos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><input class="solo-letras" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><select><option>Sí</option><option>No</option></select></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><input class="solo-letras" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><select><option>Sí</option><option>No</option></select></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><input class="solo-letras" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><select><option>Sí</option><option>No</option></select></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><input class="solo-letras" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><select><option>Sí</option><option>No</option></select></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><input class="solo-letras" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><select><option>Sí</option><option>No</option></select></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><input class="solo-letras" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><select><option>Sí</option><option>No</option></select></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4" style="background-color: #ddd;"></td>
+      <th style="text-align: right; background-color: #ddd;">TOTAL</th>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+      <td><input class="solo-numeros" /></td>
+    </tr>
+  </tfoot>
+</table>
+
 <!-- === BLOQUES IZQUIERDA | DERECHA (idénticos al PDF) ============== -->
 <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:18px 22px;">
 
   <!-- COLUMNA IZQUIERDA (span 4) -->
   <div style="grid-column:span 4;">
 
-    <!-- Egreso Mensual -->
-    <div class="subbox" >
-      <div class="subbox-header" >Egreso Mensual</div>
-      <div class="subbox-body">
-        <p style="display:flex;align-items:center;gap:6px;margin:0 0 10px;">
-          <input class="rad" name="egreso_alim"> <strong>Alimentación&nbsp;$</strong> 
-          <input class="mini">
-        </p>
-        <p style="font-size:.74rem;">Porcentaje del egreso mensual destinado a la alimentación</p>
-        <input class="mini" style="margin-top:4px;">
-      </div>
-    </div>
-
+   <!-- Egreso Mensual -->
+<div class="subbox">
+  <div class="subbox-header">Egreso Mensual</div>
+  <div class="subbox-body">
+    <p style="display:flex;align-items:center;gap:6px;margin:0 0 10px;">
+      <span style="width:12px;height:12px;border:2px solid black;border-radius:50%;display:inline-block;"></span>
+      <strong>Alimentación&nbsp;$</strong> 
+      <input  class="mini solo-numeros">
+    </p>
+    <p style="font-size:.74rem;">Porcentaje del egreso mensual destinado a la alimentación</p>
+    <input class="mini solo-numeros" style="margin-top:4px;">
+  </div>
+</div>
     <!-- Condición étnica -->
     <div class="subbox">
       <div class="subbox-header">Condición étnica</div>
@@ -402,10 +436,10 @@ table.escala tr:last-child td{background:#d9b3bf;font-weight:700;text-align:cent
       <div class="subbox-body" style="padding:0;">
         <table class="escala">
           <tr><th>Escala Final</th><th>Puntaje<br>Obtenido</th></tr>
-          <tr><td>Ingreso Familiar&nbsp;(55)</td><td><input class="tiny"></td></tr>
-          <tr><td>Tipo de Vivienda&nbsp;(15)</td><td><input class="tiny"></td></tr>
-          <tr><td>Alimentación&nbsp;(10)</td><td><input class="tiny"></td></tr>
-          <tr><td>Localidad de Procedencia&nbsp;(20)</td><td><input class="tiny"></td></tr>
+          <tr><td>Ingreso Familiar&nbsp;(55)</td><td><input class="tiny" disabled></td></tr>
+          <tr><td>Tipo de Vivienda&nbsp;(15)</td><td><input class="tiny" disabled></td></tr>
+          <tr><td>Alimentación&nbsp;(10)</td><td><input class="tiny" disabled></td></tr>
+          <tr><td>Localidad de Procedencia&nbsp;(20)</td><td><input class="tiny" disabled></td></tr>
           <tr><td>TOTAL</td><td></td></tr>
         </table>
       </div>
@@ -424,213 +458,81 @@ table.escala tr:last-child td{background:#d9b3bf;font-weight:700;text-align:cent
           <!-- Posesión -->
           <div style="border-right:2.6px solid var(--burdeos);padding:10px;">
             <div class="subbox-header" style="background:var(--dorado);font-size:.78rem;">Posesión de la vivienda</div>
-            <br>
-            <br>
-            <p style="margin:6px 0 4px;font-size:.74rem;">La vivienda donde habita es: </p>
-                      
+            <p style="margin:6px 0 4px;font-size:.74rem;">La vivienda donde habita es:<input class="tiny solo-numeros"></p>
+            <ol style="font-size:.7rem;margin-left:18px;">
+              <li>Propia y totalmente pagada………01</li>
+              <li>Propia y la está pagando………02</li>
+              <li>Propia y está hipotecada………03</li>
+              <li>Rentada o Alquilada………04</li>
+              <li>Prestada o la está cuidando………05</li>
+              <li>Intestada o está en litigio………06</li>
+            </ol>
+          </div>
 
-<select id="posesionVivienda" name="posesionVivienda" required>
-  <option value="">Seleccione una opción</option>
-  <option value="01">Propia y totalmente pagada</option>
-  <option value="02">Propia y la está pagando</option>
-  <option value="03">Propia y está hipotecada</option>
-  <option value="04">Rentada o Alquilada</option>
-  <option value="05">Prestada o la está cuidando</option>
-  <option value="06">Intestada o está en litigio</option>
-</select>
-            
-
-
- 
+          <!-- Material -->
+          <div style="padding:10px;">
+            <div class="subbox-header" style="background:var(--dorado);font-size:.78rem;">Material de la vivienda</div>
+            <p style="margin:6px 0 4px;font-size:.74rem;">¿De qué material es la mayor parte de su vivienda?  (Lee las opciones y registra el número correspondiente)</p>
+            <ol style="font-size:.7rem;margin-left:18px;">
+              <li>a.- Paredes / muros <input class="tiny solo-numeros"></li>
+              <li>b.- Techo <input class="tiny solo-numeros"></li>
+              <li>c.- Piso <input class="tiny solo-numeros"></li>
+            </ol>
+             <div class="material-item"><span>Cartón, tela</span><span>01</span></div>
+  <div class="material-item"><span>Palma o Paja</span><span>02</span></div>
+  <div class="material-item"><span>Adobe</span><span>03</span></div>
+  <div class="material-item"><span>Teja</span><span>04</span></div>
+  <div class="material-item"><span>Lámina de cartón</span><span>05</span></div>
+  <div class="material-item"><span>Lámina metálica</span><span>06</span></div>
+  <div class="material-item"><span>Lámina de asbesto</span><span>07</span></div>
+  <div class="material-item"><span>Madero o tejamanil</span><span>08</span></div>
+  <div class="material-item"><span>Tabique, ladrillo, piedra</span><span>09</span></div>
+  <div class="material-item"><span>Concreto, firme, loseta</span><span>10</span></div>
+  <div class="material-item"><span>Tierra</span><span>11</span></div>
+</div>
 
           </div>
           
-          <!-- Material -->
-          <div style="padding:10px;">
-
-
-            
-
-            <div class="subbox-header" style="background:var(--dorado);font-size:.78rem;">Material de la vivienda</div>
-            <h3>¿De qué material es la mayor parte de su vivienda?</h3>
-
-<!-- Selector general si se requiere -->
-  <p style="margin:6px 0 4px;font-size:.74rem;">a.- Las Paredes o muros de la vivienda: </p>
-
-<select id="materialPrincipal" name="materialPrincipal">
-  <option value="">Seleccione una opción</option>
-  <option value="1">Cartón, tela</option>
-  <option value="2">Palma, paja</option>
-  <option value="3">Adobe</option>
-  <option value="4">Teja</option>
-  <option value="5">Lámina de cartón</option>
-   <option value="6">Lámina metálica</option>
-    <option value="7">Lámina de asbesto</option>
-     <option value="8">Madero o tejamanil</option>
-      <option value="9">Tabique, ladrillo, piedra</option>
-          <option value="10">Concreto, firme, loseta</option>
-              <option value="11">Tierra</option>
-  <!-- Agrega más opciones según tu catálogo -->
-</select>
-
-
-
-
-
- <p style="margin:6px 0 4px;font-size:.74rem;">b.- Techo de la vivienda </p>
-
-<select id="materialPrincipal" name="materialPrincipal">
-  <option value="">Seleccione una opción</option>
-  <option value="1">Cartón, tela</option>
-  <option value="2">Palma, paja</option>
-  <option value="3">Adobe</option>
-  <option value="4">Teja</option>
-  <option value="5">Lámina de cartón</option>
-   <option value="6">Lámina metálica</option>
-    <option value="7">Lámina de asbesto</option>
-     <option value="8">Madero o tejamanil</option>
-      <option value="9">Tabique, ladrillo, piedra</option>
-          <option value="10">Concreto, firme, loseta</option>
-              <option value="11">Tierra</option>
-  <!-- Agrega más opciones según tu catálogo -->
-</select>
-
-
-
- <p style="margin:6px 0 4px;font-size:.74rem;">c.- Piso de la vivienda  </p>
-
-<select id="materialPrincipal" name="materialPrincipal">
-  <option value="">Seleccione una opción</option>
-  <option value="1">Cartón, tela</option>
-  <option value="2">Palma, paja</option>
-  <option value="3">Adobe</option>
-  <option value="4">Teja</option>
-  <option value="5">Lámina de cartón</option>
-   <option value="6">Lámina metálica</option>
-    <option value="7">Lámina de asbesto</option>
-     <option value="8">Madero o tejamanil</option>
-      <option value="9">Tabique, ladrillo, piedra</option>
-          <option value="10">Concreto, firme, loseta</option>
-              <option value="11">Tierra</option>
-  <!-- Agrega más opciones según tu catálogo -->
-</select>
-
-
-            
-           
-
-
-            
-          </div>
-
-
         </div><!-- /fila1 -->
 
         <!-- Fila 2 : Servicios | Tamaño -->
         <div style="display:grid;grid-template-columns:1fr 1fr;border-top:2.6px solid var(--burdeos);">
           <!-- Servicios -->
           <div style="border-right:2.6px solid var(--burdeos);padding:10px;">
-            <h3 style="background-color: #b8945c; color: white; padding: 4px;">Servicios de la vivienda</h3>
-<p>Servicios básicos con los que cuenta (Registre Nº)<br><strong>SI……01 &nbsp;&nbsp; NO……02</strong></p>
+            <div class="subbox-header" style="background:var(--dorado);font-size:.78rem;">Servicios de la vivienda</div>
+            <p style="margin:6px 0 6px;font-size:.72rem;">Servicios básicos con los que cuenta a (Registra el número correspondiente de su respuesta) <strong>SI……01   NO……02</strong></p>
 
-<form>
-  <label>a.- Luz</label><br>
-  <select name="luz" required>
-    <option value="">Seleccione</option>
-    <option value="01">Sí</option>
-    <option value="02">No</option>
-  </select><br><br>
+            <label>a.- Luz <input class="tiny solo-numeros"></label><br>
+            <label>b.- Agua Potable <input class="tiny solo-numeros"></label><br>
+            <label>c.- Cisterna <input class="tiny solo-numeros"></label><br>
+            <label>d.- Celular <input class="tiny solo-numeros"></label><br>
+            <label>e.- Internet en casa <input class="tiny solo-numeros"></label><br>
+            <label>f.- Televisión <input class="tiny solo-numeros"></label><br>
+            <label>g.- ¿Drenaje conectado a red municipal? <input class="tiny solo-numeros"></label><br>
+             
 
-  <label>b.- Agua Potable</label><br>
-  <select name="aguaPotable" required>
-    <option value="">Seleccione</option>
-    <option value="01">Sí</option>
-    <option value="02">No</option>
-  </select><br><br>
+            <ol style="font-size:.7rem;margin-left:18px;">
+              <li>Red municipal………03</li>
+              <li>La calle………04</li>
+              <li>Aire Libre………05</li>
+              <li>No tiene………06</li>
+              
+</ol>
 
-  <label>c.- Cisterna</label><br>
-  <select name="cisterna" required>
-    <option value="">Seleccione</option>
-    <option value="01">Sí</option>
-    <option value="02">No</option>
-  </select><br><br>
-
-  <label>d.- Celular</label><br>
-  <select name="celular" required>
-    <option value="">Seleccione</option>
-    <option value="01">Sí</option>
-    <option value="02">No</option>
-  </select><br><br>
-
-  <label>e.- Internet en casa</label><br>
-  <select name="internet" required>
-    <option value="">Seleccione</option>
-    <option value="01">Sí</option>
-    <option value="02">No</option>
-  </select><br><br>
-
-  <label>f.- Televisión</label><br>
-  <select name="television" required>
-    <option value="">Seleccione</option>
-    <option value="01">Sí</option>
-    <option value="02">No</option>
-  </select><br><br>
-
-  <label>g.- ¿Drenaje conectado a red municipal?</label><br>
-  <select name="drenaje" required>
-    <option value="">Seleccione</option>
-    <option value="01">Sí</option>
-    <option value="02">No</option>
-  </select><br><br>
-
-  <label>La calle</label><br>
-  <select name="laCalle" required>
-    <option value="">Seleccione</option>
-    <option value="01">Sí</option>
-    <option value="02">No</option>
-  </select><br><br>
-
-  <label>Aire libre</label><br>
-  <select name="aireLibre" required>
-    <option value="">Seleccione</option>
-    <option value="01">Sí</option>
-    <option value="02">No</option>
-  </select><br><br>
-
-  <label>No tiene</label><br>
-  <select name="noTiene" required>
-    <option value="">Seleccione</option>
-    <option value="01">Sí</option>
-    <option value="02">No</option>
-  </select><br><br>
-</form>
-
-
-
-
-
-
-
-           
-           
           </div>
 
           <!-- Tamaño -->
           <div style="padding:10px;">
             <div class="subbox-header" style="background:var(--dorado);font-size:.78rem;">Tamaño de la vivienda</div>
-            
-            <p style="margin:6px 0 6px;font-size:.74rem;">¿Cuántos dormitorios tiene? <input class="tiny"></p>
+            <p style="margin:6px 0 6px;font-size:.74rem;">La vivienda donde habita ¿Cuántos dormitorios tiene?( Registre solamente las habitaciones para dormir )<input class="tiny solo-numeros"></p>
 
-            <label for="personasDormitorio">Número de personas por dormitorio (Registre Nº)</label><br>
-<select id="personasDormitorio" name="personasDormitorio" required>
-  <option value="">Seleccione una opción</option>
-  <option value="01">4 o más</option>
-  <option value="02"> 3</option>
-  <option value="03">1 o 2</option>
-</select>
-           
-            <p style="margin-top:8px;font-size:.74rem;">Puntaje de Vivienda <input class="tiny"></p>
-            
+            <p style="margin:6px 0 6px;font-size:.74rem;">Número de personas por dormitorio (Registre el número correspondiente de su respuesta)<input class="tiny solo-numeros"></p>
+            <ol style="font-size:.72rem;margin-left:18px;">
+              <li>a.- 4 o más…………01</li>
+              <li>b.- 3…………02</li>
+              <li>c.- 1 o 2…………03</li>
+            </ol>
+            <p style="margin-top:8px;font-size:.74rem;">Puntaje de Vivienda <input class="tiny" disabled></p>
           </div>
         </div><!-- /fila2 -->
 
@@ -657,49 +559,54 @@ datos personales para el registro de la solicitud, así como en el padrón que d
 Gobierno del Estado de Hidalgo.
           </p>
           <br />
-          <div class="fila">
+              <div class="fila">
             <label class="col-6"
               >Firma del solicitante <input type="text" style="height: 40px"
             /></label>
           </div>
-
-  <p style="font-size: 0.75rem; line-height: 1.35">
-          Diagnóstico social, o características prioritarias del programa no contemplados y contempladas
-en el cuestionario. Se puede agregar un anexo en caso necesario.
-          </p>
-          <br />
-          <div class="fila">
-            <label class="col-6"> <input type="text" style="height: 40px"
+                 <p style="font-size: 0.75rem; line-height: 1.35">Diagnóstico social, o características prioritarias del programa no contemplados y contempladas en el cuestionario. Se puede agregar un anexo en caso necesario</p>
+                <div class="fila">
+            <label class="col-6"
+              > <input type="text" style="height: 40px"
             /></label>
           </div>
-
         </div>
       </section>
 
       <!-- 6.- VALIDACIÓN -->
-      <section class="bloque" id="validacion">
-        <div class="titulo-bloque">6.- Validación de Información</div>
-        <div class="contenido">
-          <div class="fila">
-            <label class="col-4"
-              >¿El solicitante cumple con los criterios?
-              <select>
-                <option>SÍ</option>
-                <option>NO</option>
-              </select></label
-            >
-            <label class="col-2"
-              >Puntaje Obtenido <input type="number"
-            /></label>
-            <label class="col-3"
-              >Elaboró: Nombre / Cargo / Firma <input type="text"
-            /></label>
-            <label class="col-3"
-              >Validó: Nombre / Cargo / Firma <input type="text"
-            /></label>
-          </div>
-        </div>
-      </section>
+     <section class="bloque" id="validacion"> 
+  <div class="titulo-bloque">6.- Validación de Información</div>
+  <div class="contenido">
+    <div class="fila">
+      <label class="col-4">
+        ¿El solicitante cumple con los criterios?
+        <select disabled>
+          <option>SÍ</option>
+          <option>NO</option>
+        </select>
+      </label>
+      <label class="col-2">
+        Puntaje Obtenido <input type="number" disabled />
+      </label>
+      <label class="col-3">
+        Elaboró: Nombre / Cargo / Firma <input type="text" disabled />
+      </label>
+      <label class="col-3">
+        Validó: Nombre / Cargo / Firma <input type="text" disabled />
+      </label>
+    </div>
+  </div>
+</section>
+     <div style="text-align: right; margin: 24px 16px">
+        <a
+          class="btn btn-primary"
+          
+          target="_blank"
+          rel="noopener"
+        >
+          Finalizar y guardar
+        </a>
+      </div>
 
       <!-- NOTA LEGAL (misma que pág. 1, opcional) -->
       <div class="nota-legal">
@@ -709,4 +616,75 @@ en el cuestionario. Se puede agregar un anexo en caso necesario.
         </div>
      </main>
   </body>
+   <script>
+ 
+document.addEventListener("DOMContentLoaded", () => {
+  // FECHA AUTOMÁTICA
+  const fechaInput = document.getElementById("fecha");
+  const hoy = new Date();
+  const dia = String(hoy.getDate()).padStart(2, '0');
+  const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+  const anio = hoy.getFullYear();
+  if (fechaInput) fechaInput.value = `${dia}/${mes}/${anio}`;
+
+  // CAMPOS SOLO LETRAS
+  document.querySelectorAll("input.solo-letras").forEach(input => {
+    input.setAttribute("pattern", "[A-Za-zÁÉÍÓÚáéíóúÑñ ]+");
+    input.setAttribute("title", "Solo letras");
+    input.addEventListener("input", () => {
+      input.value = input.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '');
+    });
+  });
+
+  // CAMPOS SOLO NÚMEROS
+  document.querySelectorAll("input.solo-numeros").forEach(input => {
+    input.setAttribute("pattern", "[0-9]+");
+    input.setAttribute("title", "Solo números");
+    input.addEventListener("input", () => {
+      input.value = input.value.replace(/[^0-9]/g, '');
+    });
+  });
+
+  // VALIDACIÓN DE CORREOS SOLO AL PRESIONAR “Continuar”
+  const btnContinuar = document.querySelector('a.btn-primary[href="pagina2.html"]');
+  if (btnContinuar) {
+    btnContinuar.addEventListener("click", function (event) {
+      const correos = document.querySelectorAll('input[type="email"]');
+      const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      let hayError = false;
+
+      correos.forEach(input => {
+        const valor = input.value.trim();
+        if (valor && !regexCorreo.test(valor)) {
+          alert("Correo inválido. Verifica el formato (ejemplo@dominio.com).");
+          input.focus();
+          hayError = true;
+        }
+      });
+
+      if (hayError) {
+        event.preventDefault(); // Detiene navegación
+      }
+    });
+  }
+
+  // ASIGNAR CLASES EN LA TABLA FAMILIAR
+  document.querySelectorAll("table tbody tr").forEach(row => {
+    const parentesco = row.cells[1]?.querySelector("input");
+    if (parentesco) parentesco.classList.add("solo-letras");
+
+    [...row.cells].forEach((cell, i) => {
+      if (i !== 1) {
+        const input = cell.querySelector("input");
+        if (input) input.classList.add("solo-numeros");
+      }
+    });
+  });
+
+  document.querySelectorAll("table tfoot input").forEach(input => {
+    input.classList.add("solo-numeros");
+  });
+});
+
+</script>
 </html>
